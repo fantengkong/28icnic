@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="initial-scale=1, maximum-scale=1, user-scalable=no, width=device-width">
+    <title></title>
+
+    <link href="lib/ionic/css/ionic.css" rel="stylesheet">
+    <link href="css/style.css" rel="stylesheet">
+
+    <!-- IF using Sass (run gulp sass first), then uncomment below and remove the CSS includes above
+    <link href="css/ionic.app.css" rel="stylesheet">
+    -->
+
+    <!-- ionic/angularjs js -->
+    <script src="lib/ionic/js/ionic.bundle.js"></script>
+
+    <!-- cordova script (this will be a 404 during development) -->
+    <script src="cordova.js"></script>
+
+    <!-- your app's js -->
+    <script src="js/controller.js"></script>
+    <script src="js/app.js"></script>
+  </head>
+  <body ng-app="starter">
+    <ion-pane ng-controller="listCtrl">
+      <ion-header-bar align-title="center" class="bar-positive">
+        <div class="buttons" ng-click="showDeleteButtons()">
+          <button class="button button-clear icon ion-ios-minus-outline"></button>
+        </div>
+        <h1 class="title">首页</h1>
+        <div class="buttons" ng-click="showReorderButtons()">
+          <button class="button button-clear icon ion-drag"></button>
+        </div>
+      </ion-header-bar>
+      <ion-content scrollbar-y="false">
+        <ion-list
+        show-delete="showDelete"
+        show-reorder="showReorder"
+        can-swipe="true"
+        type="card">
+          <ion-item ng-repeat="l in list" class="item-thumbnail-left">
+            <img src="http://placehold.it/100x100">
+            <h2>{{l.title}}</h2>
+            <p>{{l.description}}</p>
+            <ion-delete-button class="ion-minus-circled" ng-click="list.splice($index, 1)"></ion-delete-button>
+            <ion-reorder-button class="ion-navicon" on-reorder="moveItem(l, $fromIndex, $toIndex)"></ion-reorder-button>
+            <ion-option-button class="button-energized">编辑</ion-option-button>
+            <ion-option-button class="button-assertive" ng-click="list.splice($index, 1)">删除</ion-option-button>
+          </ion-item>
+        </ion-list>
+      </ion-content>
+      <ion-footer-bar align-title="center" class="bar-positive">
+        <h1 class="title">about us</h1>
+      </ion-footer-bar>
+    </ion-pane>
+  </body>
+</html>

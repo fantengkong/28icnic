@@ -1,0 +1,7 @@
+/* Empty. Add your own CSS if you like */
+
+.row .col {
+  border: solid 1px #666;
+  border-radius: 3px;
+  text-align: center;
+}
